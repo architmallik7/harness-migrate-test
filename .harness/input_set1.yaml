@@ -1,0 +1,14 @@
+inputSet:
+  name: input_set1
+  identifier: input_set1
+  orgIdentifier: default
+  projectIdentifier: architpipeline
+  pipeline:
+    identifier: harnessmigrate_Clone
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
