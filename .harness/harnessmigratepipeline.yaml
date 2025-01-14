@@ -71,23 +71,6 @@ pipeline:
                   when:
                     stageStatus: Success
                     condition: ""
-              - step:
-                  type: Plugin
-                  name: Release
-                  identifier: Release
-                  spec:
-                    connectorRef: Plugin_Connector
-                    image: plugins/github-release
-                    settings:
-                      api_key: <+secrets.getValue("ci_job_github_pat")>
-                      title: <+trigger.tag>
-                      files: release/harness-migrate-*.tar.gz, release/harness-migrate-checksums.txt
-                      DRONE_REPO_OWNER: harness
-                      DRONE_REPO_NAME: harness-migrate
-                  when:
-                    stageStatus: Success
-                    condition: |
-                      <+codebase.build.type> == "tag"
         variables:
           - name: DRONE_REPO_OWNER
             type: String
